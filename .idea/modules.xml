@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Lectures/demo/03-classes/03-classes.iml" filepath="$PROJECT_DIR$/Lectures/demo/03-classes/03-classes.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lectures/demo/04-inheritance/04-inheritance.iml" filepath="$PROJECT_DIR$/Lectures/demo/04-inheritance/04-inheritance.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lectures/demo/05-interfaces/05-interfaces.iml" filepath="$PROJECT_DIR$/Lectures/demo/05-interfaces/05-interfaces.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lectures/demo/06-generics/06-generics.iml" filepath="$PROJECT_DIR$/Lectures/demo/06-generics/06-generics.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lectures/demo/07-search-array/07-search-array.iml" filepath="$PROJECT_DIR$/Lectures/demo/07-search-array/07-search-array.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lectures/demo/08-arraylist/08-arraylist.iml" filepath="$PROJECT_DIR$/Lectures/demo/08-arraylist/08-arraylist.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lectures/demo/09-stack/09-stack.iml" filepath="$PROJECT_DIR$/Lectures/demo/09-stack/09-stack.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lectures/demo/10-queue/10-queue.iml" filepath="$PROJECT_DIR$/Lectures/demo/10-queue/10-queue.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lectures/demo/11-linked-list/11-linked-list.iml" filepath="$PROJECT_DIR$/Lectures/demo/11-linked-list/11-linked-list.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CS171.iml" filepath="$PROJECT_DIR$/CS171.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CS171.iml" filepath="$PROJECT_DIR$/.idea/CS171.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HW/HW.iml" filepath="$PROJECT_DIR$/HW/HW.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lectures/Lectures.iml" filepath="$PROJECT_DIR$/Lectures/Lectures.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lectures/demo/demo.iml" filepath="$PROJECT_DIR$/Lectures/demo/demo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lectures/demo/iterators/iterators.iml" filepath="$PROJECT_DIR$/Lectures/demo/iterators/iterators.iml" />
     </modules>
   </component>
 </project>
