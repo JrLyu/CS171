@@ -1,0 +1,17 @@
+
+public class Demo2 implements Test1, Test2
+{ 
+    // public void show()
+    // {
+    //     System.out.println("Demo: Implemented method.");
+    // }
+ 
+    public static void main(String[] args) 
+    { 
+        Test1 a = new Demo2();
+        Test2 b = new Demo2();
+
+        a.show();
+        b.show();
+    } 
+}

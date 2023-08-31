@@ -1,0 +1,26 @@
+
+Note:
+
+
+   public static <T extends ComparableThing<T>> void selectionSort(T[] list) 
+
+This is NOT recursion, but a TEST:
+
+	T extends ComparableThing<T>  ==  Does class T extends/implements
+						ComparableThing<T>
+
+Concretely:
+
+	Circle extends ComparableThing<Circle> ???
+
+	Does class Circle implement ComparableThing<Circle> ?
+
+Well, Circle is defined as:
+
+ public class Circle extends GeometricObject implements ComparableThing<Circle>
+              ^^^^^^                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+         Circle extends ComparableThing<Circle> == TRUE !!!
+
+
