@@ -1,5 +1,0 @@
-
-What happens if you define another variable of the same name in subclass ?
-
-Answer: it hides (overshadows) the variable in the super class
-
