@@ -33,21 +33,21 @@ public class ArrayResizer {
      */
     public static int[][] resize(int[][] array2D) {
         // Write this method for part B
-        int numRow = array2D.length;
+        int numRow = array2D.length; // create a variable to indicate the number of rows of the result array
         for (int i = 0; i < array2D.length; i++) {
-            for (int j = 0; j < array2D[i].length; j++) {
-                if (array2D[i][j] == 0) {
-                    numRow--;
-                    break;
+            for (int j = 0; j < array2D[i].length; j++) { // iterate through the entire array
+                if (array2D[i][j] == 0) { // if there is a zero
+                    numRow--; // omit this row
+                    break; // jump into the next row to continue testing
                 }
             }
         }
-        int[][] result = new int[numRow][array2D[0].length];
-        int index = 0;
+        int[][] result = new int[numRow][array2D[0].length]; // create the resulting array -- (copy)
+        int index = 0; // the index of iteration of the resulting array
         for (int i = 0; i < array2D.length; i++) {
-            if (isNonZeroRow(array2D, i)) {
+            if (isNonZeroRow(array2D, i)) { // use the method written in part A
                 for (int j = 0; j < array2D[i].length; j++) {
-                    result[index][j] = array2D[i][j];
+                    result[index][j] = array2D[i][j]; // copy the array
                 }
                 index++;
             }
