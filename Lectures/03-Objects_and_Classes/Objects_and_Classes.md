@@ -118,3 +118,84 @@ We use the `Circle` class to create two `Circle` objects:
   - Every class must have at least one constructor.
   - If a class does not have any constructor, then the Java compiler will automatically insert this constructor: `className() { }`. This constructor is called the **default constructor**. 
   - However, the Java compiler will not insert the default constructor if there is a constructor defined in the class. 
+
+## Objects as Reference Data Types
+```java
+Circle  is a reference data type
+circle1 is a reference variable
+circle1 references (points to) a Circle object
+```
+- We create variables to store the properties of a new object when we create the object
+- The behavior of an object (=program instructions) is stored when Java compiles the class definition.
+- An object's member can refer to: 
+  - A data field in the object
+  - A method in the object
+- After an object is created, its data can be accessed, and its methods can be invoked using the `dot` operator. 
+  ```java
+  objectRefVar.dataField  references a data field in the object
+  objectRefVar.method(arguments)  invokes a method on the object
+  ```
+- The `dot` operator is also known as the object member access operator. 
+- Why Java have reference typed variables and primitive typed variables? 
+  - Variables of a primitive data type can only store 1 value but can be accessed quickly -- such variables are mainly used in computations.
+  - Objects can have many data fields and can allow the programmer to represent complex things in the real world.
+    - Objects are mainly used for data representation
+    - Accessing to data in an object is slower (need 2 memory accesses)
+- We can access the member variable without using any reference variable: 
+  - An instance method is always invoked using an object reference variable: `objectRefVar.method(arguments)`
+  - The variable `objectRefVar` is also passed to an instance method as an implicit (=hidden) parameter. The name of the implicit parameter is called `this`.
+- * See `Circle.java`
+- This implicit parameter `this` is almost never necessary to write in a Java class. There is only 1 case that it is necessary: 
+  - when a parameter variable has the same name as an instance variable in the class. 
+- * See `Circle.java`
+- The `this` keyword is can also be used to invoke another constructor of the same class. 
+
+## Copying Objects
+- **Copy** an object means:
+  - Make a duplicate of an object where the duplicated object contains the same data as the original object.
+  - Updating the instance variables in the duplicate object must not affect the values in the original object. 
+- One way is to create a new object and then copy the data fields.
+  ```java
+  public static void main() {
+    Circle circle1 = new Circle(4);
+
+    // Make a COPY of circle1
+    Circle circle2 = new Circle();
+    circle2.radius = circle1.radius;
+  }
+  ```
+- * See `CircleCopy.java`. This method only works when the data fields are defined in `public`.
+- Another way is through a copy constructor: 
+  ```java
+  public class Circle{
+    private double radius = 1;
+    public Circle() { } // constructor for a circle object
+
+    public Circle(Circle c) { // copy constructor that copies circle c
+      radius = c.radius; 
+    }
+  }
+  ```
+  To invoke the copy constructor: 
+  ```java
+  public static void main() {
+    Circle circle1 = new Circle(4);
+    Circile circle2 = new Circle(circle1);
+  }
+  ```
+- * See `CircleCopy.java`.
+
+## Arrays of Objects
+- Similar to doubles and integers, we also have arrays of objects in Java. They are also defined in a similar way.
+- In other words, we can create a `Circle` object with `new` and assign it to an array element
+  ```java
+  Circle[] circleArray = new Circle[10];
+  circleArray[0] = new Circle(4);
+  ```
+- However, an array of primitive variables is different from an array of reference variables. 
+  - Primitive: 
+    - After creating an array of primitive variables, each array element can store a value.
+    - Primitive type array variables (`number[k]`) contains values and is used in computations
+  - Reference: 
+    - After creating an array of reference variables, each array element can store a reference of an object. 
+    - Reference array variables (`circleArray[k]`) contains references and is used with the member selection operator `.` (the `dot` operator).
