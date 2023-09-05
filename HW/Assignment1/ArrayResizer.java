@@ -6,7 +6,7 @@ public class ArrayResizer {
     // ******************************************************************
 
     /**
-     * This method returns true if all elrements of the row specified are nonzero
+     * This method returns true if all elements of the row specified are nonzero
      * 
      * @param array2D the 2D array of inquiry
      * @param r the specified row
@@ -33,16 +33,7 @@ public class ArrayResizer {
      */
     public static int[][] resize(int[][] array2D) {
         // Write this method for part B
-        int numRow = array2D.length; // create a variable to indicate the number of rows of the result array
-        for (int i = 0; i < array2D.length; i++) {
-            for (int j = 0; j < array2D[i].length; j++) { // iterate through the entire array
-                if (array2D[i][j] == 0) { // if there is a zero
-                    numRow--; // omit this row
-                    break; // jump into the next row to continue testing
-                }
-            }
-        }
-        int[][] result = new int[numRow][array2D[0].length]; // create the resulting array -- (copy)
+        int[][] result = new int[numNonZeroRows(array2D)][array2D[0].length]; // create the resulting array -- (copy)
         int index = 0; // the index of iteration of the resulting array
         for (int i = 0; i < array2D.length; i++) {
             if (isNonZeroRow(array2D, i)) { // use the method written in part A
