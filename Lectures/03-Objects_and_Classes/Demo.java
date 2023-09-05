@@ -10,7 +10,7 @@ public class Demo {
         double area2 = circle2.getArea(); // Tell circle2 to run getArea()
         System.out.println("Area of circle2 = " + area2);
 
-        circle1.setRadius(5); // Tell circle1 to run setRadius to change the radius of circle1
+        circle1.setRadius(5.0); // Tell circle1 to run setRadius to change the radius of circle1
         /* Do not use
         * circle1.radius = 5;
         * Because our radius variable was set public.
