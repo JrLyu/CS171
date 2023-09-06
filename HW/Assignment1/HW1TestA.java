@@ -1,4 +1,4 @@
-public class TestA {
+public class HW1TestA {
     public static void main(String[] args) {
 	    // Test 1
         int[][] arr = {{2, 1, 0}, 

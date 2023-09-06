@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class TestB {
+public class HW1TestB {
     public static void main(String[] args) {
         int err = 0;
 
