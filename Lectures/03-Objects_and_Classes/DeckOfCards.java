@@ -42,7 +42,7 @@ public class DeckOfCards {
             nextCard = deck[dealPosition];
             dealPosition++;
         } else {
-            return null; // No more cards in the deck
+            return null; // No more cards in the deck; Alternatively: throw an exception
         }
         return nextCard;
     }

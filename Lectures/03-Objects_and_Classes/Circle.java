@@ -22,6 +22,10 @@ public class Circle { // Class represents an object does not need a main method.
         return 3.14159 * radius * radius;
     }
 
+    public double getRadius() {
+        return radius;
+    }
+
     public void setRadius(double newRadius) { // set new radius for this circle; DO NOT use the static quantifier
         radius = newRadius;
     }

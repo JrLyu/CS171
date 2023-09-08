@@ -1,4 +1,4 @@
-public class Demo {
+public class TestCircle {
     public static void main(String[] args) {
         Circle circle1 = new Circle();
 
@@ -23,5 +23,18 @@ public class Demo {
 
         double area3 = circle1.getArea();
         System.out.println("New area of circle1 = " + area3);
+
+        // Test printCircle
+        circle1 = new Circle(1);
+        circle2 = new Circle(4);
+        printCircle(circle1);
+        printCircle(circle2);
+        // The object reference in the argument is copied to the parameter variable c.
+    }
+
+    // Method with an object as parameter
+    public static void printCircle(Circle c) {
+        System.out.println("The area of the circle of radius " +
+                            c.radius + " is " + c.getArea());
     }
 }

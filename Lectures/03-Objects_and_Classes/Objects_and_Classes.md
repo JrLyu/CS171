@@ -70,7 +70,7 @@ We use the `Circle` class to create two `Circle` objects:
         System.out.println("Area1: " + area1);
     }
 ```
-* See `Demo.java` and `Cirlce.java`
+* See `TestCircle.java` and `Cirlce.java`
 > **Unified Modeling Language (UML)**: a standardized modeling representation description of classes and objects. 
 - A Java class uses **variables** to define data fields (properties) of objects.
 - A Java class uses **methods** to define the actions/behaviors of objects. 
@@ -199,3 +199,171 @@ circle1 references (points to) a Circle object
   - Reference: 
     - After creating an array of reference variables, each array element can store a reference of an object. 
     - Reference array variables (`circleArray[k]`) contains references and is used with the member selection operator `.` (the `dot` operator).
+
+## Data Field Encapsulation
+- The most important application of visibility(=accessibility) modifiers is: **data field encapsulation**.
+> **Data Field Encapsulation** is making data fields in an object inaccessible (=`private`) to other classes (which will disallow other classes from using the data fields directly).
+- Encapsulation is important because
+  - If a data field is not `private`, program written by other programmers can tamper with the data fields.
+  - When other programs use a data field in an object directly, changing the implementation of the object is more difficult. 
+    - Changing the implementation of the object means change the way we present the properties of an object. 
+      - For example, we can use `String` to represent `suit` as `{"Spades", "Hearts", "Diamonds", "Clubs"}`. Meanwhile, we can also use `int` to represent it as `{0 = "Spades", 1 = "Hearts", 2 = "Diamonds", 3 = "Clubs}`.
+      - When we use `String`, we can use `card.suit.compareTo("Spades") == 0` to test if the suit of the card is spade. However, if we change the implementation of card to `int`, the same code `card.suit.compareTo("Spades") == 0` will cause an error because we do not have a `.compareTo()` method for an integer. 
+- So, data field encapsulation requires that data fields are defined as `private`. 
+  - When other classes need to read a data field, we must provide a `public` mutator method. 
+    - - See `CardPrivate.java` and `TestCardPrivate.java`.
+  - When we change the implementation of an object, we can still maintain compatibility with existing Java program by **providing updated accessor/mutator methods** that achieve the same effect as the old implementation. 
+
+> **Immutable Objects**: An immutable object is an object where its properties cannot be changed after it is created. 
+  - Why we what to have immutable objects:
+    - Some computer applications are used to record a history of events which are represented by objects
+    - The "historical objects" must not be changed. 
+  - To prevent the data fields of the objects being updated:
+    - Prevent the variables being updated with direct access (e.g. `circle1.radius = newRadius`): 
+      - Define all distance variables as `private`.
+    - Prevent the variables being updated with a mutator method: 
+      - Immutable objects must not have any mutator methods. 
+    - Prevent the variables being updated with a reference variable:
+      - Immutable objects should not have accessor methods that return a reference to an object that has `public` data fields. 
+  - An example of immutable object: the `String` class in Java will create immutable `String` objects:
+    - The `String` class only has methods that construct a new `String` from an input string, and the input string is not updated. 
+    - Example: 
+    ```java
+    public static void main(String[] args) {
+      String s1 = "abc";
+      String s2 = s1.toUpperCase();
+
+      System.out.println(s1); // "abc", unchanged
+      System.out.println(s2); // "ABC"
+    }
+    ```
+
+## Passing Objects as Parameters to Methods
+- Methods can have reference type parameter variables. 
+- - See `TestCircle.java` 
+- However, the following code will change the properties of the object directly: 
+  ```java
+  public static void incrementRadius(Circle c) {
+    c.radius++; // Increment radius by 1
+  }
+
+  public static void main(String[] args) {
+    Circle circle1 = new Circle(4);
+    System.out.println(circle1.getRadius()); // 4
+    incrementRadius(circle1); // radius of circle1 increases by 1
+    System.out.println(circle1.getRadius()); // 5
+  }
+  ```
+  - In Java, the formal parameter `c` is an alias of the actual parameter `circle1`. So, `c.circle++` will also update `circle1.radius`.
+  - - See `CopyReference.java`
+- Review: Passing primitive variables to methods
+  - In Java, the value of the argument copied (=assigned) to the parameter variable. So, `x` in `main()` and `c` in `increment()` are different variables. 
+  - When `increment()` executes `c++`, it updates the parameter variable `c`.
+  - The variable `x` in `main()` is not affected. 
+- Passing reference variables to methods
+  - The reference type `Cricle` variable `x` contains a reference to a `Circle` object. 
+  - In Java, the value of the argument copied(=assigned) to the parameter variable. `x` in `main()` and `c` in `increment()` both reference to the same `Circle` object. 
+  - When `increment()` executes `c.radius++`, it updates the `radius` variable through the reference`c`. 
+  - The variable `x.radius` in `main()` is ALSO affected because it is the same object. 
+  ```java
+  public static void main(String[] arg) {
+    Circle circle1 = new Circle(4);
+    System.out.println(circle1.getRadius()); // 4.0
+    updateCircle(circle1);
+    System.out.println(circle1.getRadius()); // 4.0
+  }
+  public static void updateCircle(Circle c) {
+    c = new Circle(99);
+  }
+  ```
+  - The reference type `Circle` variable `circle1` contains a reference to a `Circle` object. 
+  - `circle1` in `main()` and `c` in `update()` both refer to the same `Circle` object. 
+  - When `update()` executes `c = new Circle(99)`, it creates another `Circle` object and assign its address to reference variable `c`.
+  - The variable `circle1.radius` in `main()` is not affected. 
+  - Through this example, we know: we can never make `x` in `main()` refer to a different object using a method call. This is because `x` is passed-by-value, we cannot update `x` and make it refer to a different object. 
+  - If we really want to write a method to update the reference of `x`, here's an example to do so: 
+  ```java
+  public static void main(String[] arg) {
+    Circle circle1 = new Circle(4);
+    System.out.println(circle1.getRadius()); // 4.0
+    circle1 = updateCircle(circle1); // Step 2
+    System.out.println(circle1.getRadius()); // 99.0
+  }
+  public static Circle updateCircle(Circle c) {
+    c = new Circle(99);
+    return c; // Step 1
+  }
+  ```
+
+## Static Variables (and Constants) and Static Methods
+- There are 2 kinds of variables that can be defined inside a class (that is outside any method): 
+  ```java
+  public class Circle{ 
+    public double radius; // (1) an instance variable
+    public static int count; // (2) a "static" variable
+  }
+  ```
+- Instance variables and `static` variables of objects are different:
+  - Each object has its own copy of an instance variable.
+  - `static` variable belongs to the class and all objects of that class share the same copy of a `static` variable.
+  - In other words, there is only 1 only of a `static` variable in a Java program. 
+  ```java
+  public static void main(String[] args) {
+    CircleCount circle1 = new CircleCount(2);
+        CircleCount circle2 = new CircleCount(4);
+
+        circle1.count = 99;
+
+        System.out.println(circle1.radius); // 2.0
+        System.out.println(circle1.count); // 99
+        System.out.println(circle2.radius); // 4.0
+        System.out.println(circle2.count); // 99 
+
+        circle1.radius++; // Updates an instance variable
+        circle1.count++; // Updates a static variable
+        System.out.println(circle1.radius); // 3.0
+        System.out.println(circle1.count); // 100
+        System.out.println(circle2.radius); // 4.0
+        System.out.println(circle2.count); // 100
+  }
+  ```
+  - `circle1.count` and `circle2.count` are always the same because static variables are shared
+  - `circle1.radius` and `circle2.radius` are independent to each other because instance variables are not shared. 
+- Applications of `static` variables: 
+  - The most common application where we need to use a `static` variable in a class is when writing a class that can keep a count on the number of objects that has been created by a Java program.
+  - How to implement?
+    - Define a `static` variable named `count` and initialize it to zero.
+    - Each constructor of the class must increase the `count` variable by one. 
+  - Why it works? 
+    - Because when an object is created, some constructor method is invoked once, and this algorithm will keep track on the number of objects created. 
+  - Example: 
+    ```java
+    public class Circle{
+      public double radius = 1;
+      public int count = 0;
+
+      public Circle() {
+        count++;
+      }
+      public Circle(double newRadius) {
+        radius = newRadius;
+        count++;
+      }
+    }
+    ```
+- There are also two kinds of methods that can be defined inside a class: instance method and `static` method.
+  - Instance methods always have an implicit(=hidden) object reference parameter (`this`) and can access instance variables.
+  - `static` method do not have an implicit(=hidden) object reference parameter and cannot access instance variables. 
+- Properties of `static` methods:
+  - A `static` method belongs to a class. For this reason, `static` methods are also known as class methods. 
+  - A `static` method can be invoked without using an object instance: `Math.pow(x, n)`
+  - `static` methods can only access `static` members:
+    - Invoke other `static` methods
+    - Access `static` variables
+    - `static` methods cannot access any instance variables nor invoke instance methods. 
+- `static` methods are used to perform a task that is not associated with a particular object.
+- Instance methods are used to perform a task using data in a specific object. 
+- `static` methods can be invoked in 2 different ways: 
+  - `instanceVar.staticMethod(...)`
+  - `ClassName.staticMethod(...)  <-- Preferred`
+- Some classes may have useful constants defined in them (such as $\pi$ and $e$). Since a constant cannot change its value, we will only need one copy of it, and so a constant can always be defined as `static`.
