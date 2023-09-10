@@ -15,7 +15,7 @@ public class HW2TestA {
             }
         }
 
-        a.update(3, 13);
+        a.update(3, 12);
         if (a.getRank().compareTo( "King" ) != 0) {
             System.out.println("Test A failed: card rank = King," +
                     " but getRank() returns: " +
