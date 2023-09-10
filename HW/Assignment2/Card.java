@@ -71,6 +71,6 @@ public class Card {
 
     public void update(int s, int r) {
         suit = s;
-        rank = s; // not sure why it is s here...
+        rank = r; // not sure why it is s here...
     }
 }
