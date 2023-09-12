@@ -367,3 +367,19 @@ circle1 references (points to) a Circle object
   - `instanceVar.staticMethod(...)`
   - `ClassName.staticMethod(...)  <-- Preferred`
 - Some classes may have useful constants defined in them (such as $\pi$ and $e$). Since a constant cannot change its value, we will only need one copy of it, and so a constant can always be defined as `static`.
+- The `static` block
+  - A `static` block is a nameless and parameterless `static` method in a class: 
+  ```java
+  public class myClass {
+    ...  (other memebers omitted for brevity)
+
+    // A static block    
+    static
+    {
+      ... (statements)
+    }
+  }
+  ```
+  - Use of a `static` block:
+    - `static` blocks are executed before the `main()` method
+    - `static` blocks are used to initialize `static` variables in a class. 
