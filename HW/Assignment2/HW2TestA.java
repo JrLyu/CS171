@@ -4,10 +4,10 @@ public class HW2TestA {
         Card a = null;
         String[] tests = {"Ace", "3", "Jack"};
 
-        for (int i = 0; i < tests.length; i++) {
+        for ( int i = 0; i < tests.length; i++ ) {
             a = new Card("Clubs", tests[i]);
 
-            if (a.getRank().compareTo(tests[i]) != 0) {
+            if ( a.getRank().compareTo( tests[i] ) != 0 ) {
                 System.out.println("Test A failed: card rank = " +
                         tests[i] + ", but getRank() returns: " +
                         a.getRank());
@@ -16,14 +16,15 @@ public class HW2TestA {
         }
 
         a.update(3, 12);
-        if (a.getRank().compareTo( "King" ) != 0) {
+        if ( a.getRank().compareTo( "King" ) != 0 ) {
             System.out.println("Test A failed: card rank = King," +
                     " but getRank() returns: " +
                     a.getRank());
             nErr++;
         }
 
-        if (nErr == 0) {
+
+        if ( nErr == 0 ) {
             System.out.println("Test A passed");
         }
     }

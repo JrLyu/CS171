@@ -1,4 +1,4 @@
-public class NewClass02 extends SomeClass01{
+public class NewClass02 extends SomeClass01 {
     NewClass02() { }
 
     public void method1( ) { // Overrides the inherited method1
