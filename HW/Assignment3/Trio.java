@@ -14,14 +14,14 @@ public class Trio
         // Compute the price of a trio and return it
         double[] price = new double[]{sandwich.getPrice(), salad.getPrice(), drink.getPrice()}; // create an array of prices
         double minPrice = price[0]; // initiation
-        double sumPrice = price[0];
+        double sumPrice = price[0]; // initiation
         for (int i = 1; i < price.length; i++) { // loop over the array
             if (minPrice > price[i]) { // if we find a smaller price
                 minPrice = price[i]; // update minPrice
             }
             sumPrice += price[i]; // compute sumPrice
         }
-        return sumPrice - minPrice;
+        return sumPrice - minPrice; // compute the final price
     }
 
     // Constructor
