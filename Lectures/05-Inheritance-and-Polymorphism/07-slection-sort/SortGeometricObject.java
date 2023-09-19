@@ -1,8 +1,8 @@
-public class GeometricObject {
+public class SortGeometricObject {
     private String color;
-    GeometricObject( ) { }          // Constructor 1
+    SortGeometricObject( ) { }          // Constructor 1
 
-    GeometricObject(String col) {  // Constructor 2
+    SortGeometricObject(String col) {  // Constructor 2
         color = col;
     }
     public String getColor() {
