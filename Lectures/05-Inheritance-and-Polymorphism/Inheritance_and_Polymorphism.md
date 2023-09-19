@@ -67,3 +67,67 @@
   - To maximize sharing of common properties/behaviors, we generalize different classes into a large (super) class.
     - The `is-a` generalization method will give us the maximum sharing of properties and actions
 - The Object-Oriented Design methodology uses the **is-a** generalization technique to achieve maximal sharing of properties and actions between classes. 
+- How to design the class hierarchy using the is-a generalization technique
+  - First, determine all the program classes that we will need to solve the problem. Determine the properties and actions that are needed in each class.
+  - Then, generalize similar program classes using the is-a generalization. Use the properties and actions in each class to find the more general classes.
+  - If possible, generalize further. Use the final hierarchy to determine the properties and actions of each class. 
+> **Superclass**: the more general class in the `is-a` relationship (aka, parent class)
+  - A super class has a number of properties and actions.
+> **Subclass**: the more specific class in the `is-a` relationship (aka, child class)
+  - Every object of the subclass will have all the properties and actions in the superclass.
+  - In addition, the subclass object can have other properties and actions not found in the superclass. 
+    - * See `TestGeometricObject.java`
+- The OOP design allows us to avoid duplications of codes when solving a problem! 
+  - * See `TestOldWay.java`
+  - We define a superclass that contains the common (shared) properties and actions in all classes
+    - Some methods in the superclass may not have a useful method body - it's OK. This is very useful for the polymorphism mechanism.
+  - We create subclasses that extend the superclass.
+    - For private instance variables, we must use its accessor/mutator methods to use the variables.
+    - For public instance variables, we can access them directly. 
+  - We can override some methods in the subclass. 
+- Relationship between a subclass and its superclass
+  - A subclass inherits all variables and (normal) methods from its superclass. 
+  - A subclass do not inherit any constructor method from its superclass. 
+    - A constructor in the subclass must invoke a constructor in the superclass
+    - A subclass object always contains a superclass object. 
+    - Objects are initialized using its constructor
+  - Rule: a constructor in the subclass must invoke some constructor in its superclass as its first statement.
+    - The keyword `super(...)` is used to invoke a constructor in its superclass.
+  - Rule: if a constructor in the subclass does not invoke any constructor in its superclass, then, the Java compiler will automatically insert the call `super()` as the first statement. That is, when the first statement in a constructor is not `super(...)`, the Java compiler will call the default constructor. 
+  ```java
+  public class NewClass extends SomeClass{
+    NewClass() {
+      // Compile error -- why?
+    }
+  }
+
+  public class SomeClass {
+    public int x;
+    public SomeClass(int a) {
+      x = a;
+    }
+  }
+  ```
+  - The compile error is because the constructor `NewClass()` does not contain any `super(...)` calls, so Java compile will insert `super(...)`: 
+  ```java
+  public class NewClass extends SomeClass{
+    NewClass() {
+      super();
+    }
+  }
+  ```
+  - However, there is not matching constructor (`SomeClass()`) defined in the supercalss, which causes the error. 
+- Consequences of the constructor invocation rule in Java: 
+  - Constructor invocation rule in Java:
+    - If a class `B` inherits from class `A`, then every constructor in class `B` must invoke some constructor in class `A`.
+  - Consequence: 
+    - If another class `C` inherits from the class `B`, then every constructor in class `C` must invoke some constructor in class `B` and in class `A`.
+    - This phenomenon is called **constructor chaining**. 
+- Summary:
+  -  A subclass inherits all normal members (including `private` members) from its superclass
+  -  Methods in the subclass cannot access the `private` inherited members directly.
+  -  A subclass object contains (all members in) a supercalss object.
+  -  A subclass do not inherit any constructors from its superclass.
+  -  Because a subclass object contains (All members in) a superclass object, every constructor in the subclass must invoke a constructor in the superclass. 
+- Sometimes, we must use the overridden method inside the super class (i.e., use `super.methodName()`)
+  - * See `05-bank-account`
