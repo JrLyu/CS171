@@ -1,8 +1,8 @@
-public class SortGeometricObject {
+public class CastingGeometricObjects {
     private String color;
-    SortGeometricObject( ) { }          // Constructor 1
+    CastingGeometricObjects( ) { }          // Constructor 1
 
-    SortGeometricObject(String col) {  // Constructor 2
+    CastingGeometricObjects(String col) {  // Constructor 2
         color = col;
     }
     public String getColor() {

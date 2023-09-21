@@ -80,7 +80,7 @@ public class SelectionSortGeometricObject {
                 }
             }
             if ( minIndex != i ) {
-                SortGeometricObject help = list[minIndex];
+                SortGeometricObject help = list[minIndex]; // parent object can be asigned with a child object
                 list[minIndex] = list[i];
                 list[i] = help;
             }
