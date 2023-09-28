@@ -20,7 +20,11 @@ public class InterfaceCircle extends SortGeometricObject implements ComparableTh
         return "Color = " + getColor() + " : " + "Radius = " + getRadius();
     }
 
+
+    @Override
+    // We must use the same signature to override
     public int compareTo(ComparableThing other) {
+        // downcasting -- otherwise, we do not have getArea() for a ComparableThing object
         InterfaceCircle help = (InterfaceCircle) other;
         double diff = this.getArea() - help.getArea();
         return (int) Math.signum(diff);

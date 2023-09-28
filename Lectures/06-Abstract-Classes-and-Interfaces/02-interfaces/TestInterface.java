@@ -10,7 +10,7 @@ public class TestInterface {
             System.out.print(myAccount[i].getBalance() + " ");
         }
         System.out.println();
-        ComparableThing.selectionSort(myAccount);  // Uses upcasting !
+        InterfaceSort.selectionSort(myAccount);  // Uses upcasting !
         System.out.println("After Sorting: ");
         for (int i = 0; i < myAccount.length; i++) {
             System.out.print(myAccount[i].getBalance() + " ");
@@ -27,7 +27,7 @@ public class TestInterface {
             System.out.print(myCircle[i].getRadius() + " ");
         }
         System.out.println();
-        ComparableThing.selectionSort(myCircle);  // Uses upcasting !
+        InterfaceSort.selectionSort(myCircle);  // Uses upcasting !
         System.out.println("After Sorting: ");
         for (int i = 0; i < myCircle.length; i++) {
             System.out.print(myCircle[i].getRadius() + " ");
