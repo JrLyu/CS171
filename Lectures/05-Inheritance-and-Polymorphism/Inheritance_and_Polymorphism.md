@@ -438,3 +438,57 @@ public static void mian(String[] args) {
       }
     }
   ```
+
+## The `protected` Modifier and the `final` Modifier
+- The accessibility modifiers indicates the degree of trust (closeness) of program code written by different people.  
+  - Highest level of trust: Code inside a class
+  - 2nd highest level of trust: code inside a package
+  - Lowest level of trust: code inside a different package.
+- The `protected` modifier will allow subclasses inside a different package to access data fields or methods in the superclass. 
+  - Syntax to define a member with `protected` accessibility: 
+  ```java
+    protected memberDefinition;
+  ```
+  - Where we can access with `protected` accessibility:
+    - from inside a method in the same class (closest association)
+    - from inside a method in the same package (2nd closest association)
+    - from inside a method in a subclass defined outside the package
+    - but not from inside a method in an unrelated class defined outside the package
+  
+| Modifier on Members | from the same class | from the same package | from subclass in different package | from a different package |
+|:---:|:---:|:---:|:---:|:---:|
+| `public` | OK | OK | OK | OK|
+| `protectd` | OK | OK | OK | No |
+| `default` | OK | OK | No | No |
+| `private` | OK | No | No | No |
+
+- * See `TestNewCircle.java`
+- A class with the `final` qualifier cannot be extended (i.e., used as a superclass)
+```java
+// This class cannot be extended
+public final class myClass {
+  // data fieds, constrcutors, and methods omitted.
+}
+```
+- A method with the `final` qualifier cannot be overridden in a subclass
+```java
+public class myClass {
+  // This method cannot be overridden
+  public final void method1() {
+    // Do something,
+  }
+}
+``` 
+- * See `FinalCircle.java` and `FinalGeometricObject.java`
+
+## Hiding Variables and Multi-Inheritance
+- If a subclass defines a variable `x` with the same name as its superclass:
+  - the name `x` will refer to the variable in the subclass:
+    - The variable `x` in the subclass will overshadow (hide) the variable in the superclass.
+  - The variable `x` in the superclass can be accessed in the subclass using `super.x` (or through a non-overridden method)
+  - However, it's a terrible idea to override variables.
+- Multiple-Inheritance
+  - Java allows a class to inherit from only one superclass, while other languages (such as C++) can inherit from multiple class and made things very complicated.
+  - Java does implement some features of multiple inheritance through **interface**:
+    - A class can have multiple parent interfaces
+    - But these parent interfaces must be completely empty (=no variables and contains only method declarations)
