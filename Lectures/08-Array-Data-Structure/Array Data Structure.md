@@ -110,3 +110,70 @@ public static int[] deleteElement(int[] x) {
   - A count of the actual number of elements stored in the array.
   - The array is increased only when the `add()` operation encounters a full array.
   - The array is reduced when the occupancy drops below a certain threshold. 
+  - Inserting a new value will increase the count. If the array is not full, we do not need to increase its size.
+  - The array is increased only when the `add()` operation encounters a full array.
+    - The `add()` method will increase the array size by approximately twice the original size. This will avoid frequent copy operations.
+  - The array is reduced when the occupancy drops below a certain threshold. 
+- A commonly used algorithm to implement dynamic array is array doubling: 
+  ```java
+  temp = new int[2 * x.length];
+  for (int i = 0; i < x.length; i++) {
+    temp[i] = x[i];
+  }
+  x = temp;
+  ```
+- The `ArrayList` class in Java implements a dynamic (resizable) array
+  - To use it, we `import java.util.ArrayList;`
+  - Syntax to define an `ArrayList` (reference) variable: 
+  ```java 
+    ArrayList<ObjectType> varName
+  ```
+  - Syntax to create an `ArrayList` object
+  ```java
+    new ArrayList<Object Type> ();
+  ```
+    - The `ArrayList` object will start with an array of limited size (about 10).
+    - * See `DynamicArray.java`
+- Commonly used methods in the `ArrayList` class
+  - `size()`: returns the actual number of elements in the `ArrayList`
+  - `toString()` returns a `String` representation of all elements stored in the `ArrayList`
+  - `add(E e)`: appends the element `e` to the end of the `ArrayList` (`E` is the declared data type of the `ArrayList` elements)
+  - `add(int index, E elem)`: inserts the element `e` at index `index` and shifts and subsequent items to the right
+  - `remove(int index)`: removes the element at index `index` and shifts all remaining items to the left. 
+  - `get(int index)`: returns the element stored at the index `index`
+  - `set(int index, E elem)`: replaces the element at index `index` with the element `elem`
+  - If the element at the `index` does not exist, `get()` and `set()` will throw `IndexOutOfBoundsException`.
+- Iterating through an `ArrayList`:
+  - Use a regular `for`-loop and `get(index)`: 
+  ```java
+    for (int i = 0; i < numbers.size(); i++) {
+      System.out.println(numbers.get(i));
+    }
+  ```
+  - Use a `foreach` loop:
+  ```java
+    for (int item: numbers) {
+      System.out.println(item);
+    }
+  ```
+    - Note: a `foreach` loop cannot be used to update array elements
+  - Using an iterator object:
+  ```java
+  Iterator<Integer> numItr = numbers.iterator();
+  while (numItr.hasNext()) {
+    System.out.println(numItr.next());
+  }
+  ```
+- Java `Iterator` interface and `Iterable` interface
+  - `Iterator` is an interface (class containing all virtual methods) in `java.util.Iterator`.
+  - An object that implements the `Iterator` interface must provide at least the following methods:
+    - `hasNext()`: returns true if the iteration has more elements
+    - `next()`: return the next element in the iteration
+  - An `Iterator` allows the user to iterate over the elements stored in an `Iterable ` interface.
+  - An object is `Iterable` if it implements the `java.util.Iterable` interface.
+    - It must implement the `iterator()` method that returns a `Iterator` object. 
+
+|| Array | ArrayList |
+| :---: | :---: | :---:|
+|Pros|Uses less memory; can store primitive types; can be multi-dimensional|Size is dynamic; easy to add/remove elements|
+|Cons|Size cannot change;hard to add/remove elements|Uses more memory; cannot store primitive types; can only be one-dimensional|
