@@ -1,9 +1,10 @@
-// Test the Trap class
+// Test the AnimalTrap class
+
 public class HW5TestB2 {
     public static void main(String[] args) {
         int err = 0 ;
 
-        Trap<Animal> t1 = new Trap<>();
+        Trap<Animal> t1 = new AnimalTrap<>();  // **** Make this work !!!
 
         Mouse m1 = new Mouse("mouse1", "peep", 1);
         Mouse b1 = new Mouse("bear1", "roar", 1);
@@ -76,6 +77,7 @@ public class HW5TestB2 {
                 System.out.println("Correct: " + ans);
             }
         }
+
 
         if (err == 0) {
             System.out.println("\nTest B2 passed\n");

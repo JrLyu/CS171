@@ -1,9 +1,10 @@
 // Test the Trap class
+
 public class HW5TestB1 {
     public static void main(String[] args) {
         int err = 0 ;
 
-        Trap<Animal> t1 = new AnimalTrap<>();  // **** Make this work !!!
+        Trap<Animal> t1 = new Trap<>();
 
         Mouse m1 = new Mouse("mouse1", "peep", 1);
         Mouse b1 = new Mouse("bear1", "roar", 1);
