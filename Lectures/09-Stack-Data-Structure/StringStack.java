@@ -1,14 +1,14 @@
-public class DynamicStack implements MyStackInterface<Integer> {
-    private Integer[] item;
+public class StringStack implements MyStackInterface<String> {
+    private String[] item;
     private int stackTop;
     private final double DELTA = 0.25; // wastage threshold
 
-    public DynamicStack(int N) { // Create a stack of size N
-        item = new Integer[N];
+    public StringStack(int N) {
+        item = new String[N];
         stackTop = 0;
     }
     @Override
-    public boolean isEmpty() { // Test if the stack if empty
+    public boolean isEmpty() {
         return stackTop == 0;
     }
 
@@ -18,30 +18,30 @@ public class DynamicStack implements MyStackInterface<Integer> {
     }
 
     @Override
-    public void push(Integer e) {
+    public void push(String s) {
         if (isFull()) {
             // if the array is full, then double the size of the array
-            Integer[] temp = new Integer[item.length * 2];
+            String[] temp = new String[item.length * 2];
             for (int i = 0; i < item.length; i++) {
                 temp[i] = item[i];
             }
             item = temp;
         }
-        item[stackTop] = e; // (1) store item
+        item[stackTop] = s; // (1) store item
         stackTop++; // (2) increment stackTop
     }
 
     @Override
-    public Integer pop() {
+    public String pop() {
         if (isEmpty()) {
             System.out.println("Empty");
             return null; // or throw an exception
         }
         stackTop--; // (1) decrease stackTop
-        int retVal = item[stackTop];
+        String retVal = item[stackTop];
         // if (stackTop < δ*item.length) reduce the array by half
         if (stackTop < DELTA * item.length && item.length >= 2) {
-            Integer[] temp = new Integer[item.length / 2];
+            String[] temp = new String[item.length / 2];
             for (int i = 0; i <= stackTop; i++) {
                 temp[i] = item[i];
             }
@@ -51,7 +51,7 @@ public class DynamicStack implements MyStackInterface<Integer> {
     }
 
     @Override
-    public Integer peek() {
+    public String peek() {
         return item[stackTop - 1];
     }
 }

@@ -4,8 +4,6 @@ public class TestDynamicStack {
 
         s.push(1);
         s.push(2);
-
-        System.out.println("---- Start of push/pop sequence");
         s.push(5); // Doubles the array
         s.pop();      // Halves the array
         s.push(5); // and so on...
