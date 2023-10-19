@@ -1,5 +1,3 @@
-package Lectures.Review;
-
 public class Alias {
     public static void main(String[] args) {
         double[] myList = {34, 15, 66, 7};

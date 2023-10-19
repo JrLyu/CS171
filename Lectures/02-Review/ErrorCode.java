@@ -1,5 +1,3 @@
-package Lectures.Review;
-
 public class ErrorCode {
     public static void main(String[] args) {
        if (areaOfCircle(-4) == -1) {

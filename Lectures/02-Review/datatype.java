@@ -1,5 +1,3 @@
-package Lectures.Review;
-
 // The date type provides the context on how to interpret a number inside the computer
 public class datatype {
     public static void main(String[] args) {

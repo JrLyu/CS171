@@ -1,6 +1,6 @@
 package LearnPackage;
 public class Demo {
-    void aMetthod() {
+    void aMethod() {
         c1 o = new c1();
 
         o.x1 = 1;

@@ -1,4 +1,4 @@
-//package LearnPackage; -- This file will include compile errors!! Because the IDE does not know which package it is
+//package LearnPackage; //-- This file will include compile errors!! Because the IDE does not know which package it is
 //public class Demo {
 //    void aMetthod() {
 //        c1 o = new c1();

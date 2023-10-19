@@ -1,5 +1,3 @@
-package Lectures.Review;
-
 public class CopyArray {
     public static void main(String[] args) {
         double[] myList = {34, 15, 66, 7};
@@ -18,7 +16,7 @@ public class CopyArray {
             myListCopy[i] = myList[i];
         }
 
-	    myListCopy[1] = 999; // Update will also affect myList[1]
+	    myListCopy[1] = 999; // Will this Update also affect myList[1]?
 
 	    System.out.println("After myListCopy[1] = 999:");
         System.out.print("myList[i] = ");

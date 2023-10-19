@@ -1,5 +1,3 @@
-package Lectures.Review;
-
 public class PassPrimitive {
     public static void Method1(int x) {// This x is local to Method1() 
         System.out.println("Method1's parameter x before update = " + x);

@@ -1,5 +1,3 @@
-package Lectures.Review;
-
 public class ThrowException {
     public static void main(String[] args) {
         double area = areaOfCircle(-4);

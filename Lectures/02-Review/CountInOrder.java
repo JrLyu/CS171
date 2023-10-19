@@ -1,5 +1,3 @@
-package Lectures.Review;
-
 public class CountInOrder {
     public static void main(String[] args) {
         int[] test = new int[]{3, 7, 8, 5, 4, 9};

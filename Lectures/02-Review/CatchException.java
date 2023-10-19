@@ -1,5 +1,3 @@
-package Lectures.Review;
-
 public class CatchException {
     public static void main(String[] args) {
         try {

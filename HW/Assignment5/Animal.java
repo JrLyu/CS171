@@ -11,18 +11,18 @@ public class Animal {
 
     // DO NOT make any change to this program file
     public Animal(String n, String s, double w) {
-	name = n;
-	sound = s;
-	weight = w;
+	    name = n;
+	    sound = s;
+	    weight = w;
     }
 
     // DO NOT make any change to this program file
     public String toString() {
-	return name + " - " + sound;
+	    return name + " - " + sound;
     }
 
     // DO NOT make any change to this program file
     public double getWeight() {
- 	return weight;
+ 	    return weight;
     }
 }
