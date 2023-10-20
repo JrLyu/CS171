@@ -5,8 +5,9 @@ public class InfixToPostfix {
     public static ArrayList<String> convertToPostfix(String[] inp) {
         ArrayList<String> result = new ArrayList<>();
         Stack<String> operatorStck = new Stack<>();
+        String s;
         for (int i = 0; i < inp.length; i++) {
-            String s = inp[i];
+            s = inp[i];
             if (s.equals("+") || s.equals("-")) { // If s is an operator
                 if (!operatorStck.isEmpty()) {
                     if (operatorStck.peek().equals("+") || operatorStck.peek().equals("-")) {
