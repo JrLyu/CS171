@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 
 public class CircularBuffer<T> implements DEQueue<T> {
     private T[] buf;
@@ -19,17 +20,27 @@ public class CircularBuffer<T> implements DEQueue<T> {
 
     @Override
     public boolean isFull() {
-        return false;
+        return (write + 1) % buf.length == read;
     }
 
     @Override
     public void addFirst(T t) {
-
+        if (isFull()) {
+            throw new NoSuchElementException();
+        } else {
+            buf[write] = t;
+            write = (write + 1) % buf.length;
+        }
     }
 
     @Override
     public void addLast(T t) {
-
+        if (isFull()) {
+            throw new NoSuchElementException();
+        } else {
+            buf[read] = t;
+            read = (read + buf.length - 1) % buf.length;
+        }
     }
 
     @Override
