@@ -1,7 +1,9 @@
+import java.util.Iterator;
+
 public class TestGenericLList {
     public static void main(String[] args) {
         System.out.println("------ Test isEmpty(), addFirst(), addLast() ------");
-        GenericLinkedList<String> myList = new GenericLinkedList<>();
+        GenericLList<String> myList = new GenericLList<>();
 
         System.out.println(myList.isEmpty()); // True
         System.out.println("myList: " + myList);
@@ -45,7 +47,7 @@ public class TestGenericLList {
         }
 
         System.out.println("\n\n------ Test getFirst(), getLast(), and get() ------");
-        GenericLinkedList<String> stringList = new GenericLinkedList<>();
+        GenericLList<String> stringList = new GenericLList<>();
 
         stringList.addFirst("E");
         stringList.addFirst("D");
@@ -70,7 +72,7 @@ public class TestGenericLList {
         }
 
         System.out.println("\n\n------ Test remove() ------");
-        GenericLinkedList<Integer> intList = new GenericLinkedList<>();
+        GenericLList<Integer> intList = new GenericLList<>();
 
         intList.addFirst(89);
         intList.addFirst(78);
@@ -92,6 +94,18 @@ public class TestGenericLList {
             intList.remove(99);
         } catch (Exception e) {
             System.out.println("remove(99): " + e);
+        }
+
+        System.out.println("\n\n------ Test Iterator() ------");
+        GenericLList<String> iterableList = new GenericLList<String>();
+
+        iterableList.addFirst("C");
+        iterableList.addFirst("B");
+        iterableList.addFirst("A");
+        System.out.println(iterableList); // A -> B -> C
+
+        for(String string: iterableList) {
+            System.out.println(string);
         }
     }
 }

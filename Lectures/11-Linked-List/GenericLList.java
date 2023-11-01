@@ -1,7 +1,11 @@
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class GenericLinkedList<T> implements SimpleList<T> {
-    // An inner class
+public class GenericLList<T> implements SimpleList<T>, Iterable<T> {
+
+    /*******************************************************
+     * Private inner (nested) class Node
+     ********************************************************/
     public class Node<T> {
         // Node instance variable is generic
         private T item;
@@ -22,7 +26,7 @@ public class GenericLinkedList<T> implements SimpleList<T> {
     // Need variable to store a linked list...
     private Node<T> first; // The list starts at first
     // constructor to initialize the variables
-    public GenericLinkedList() {
+    public GenericLList() {
         first = null;
     }
 
@@ -161,6 +165,38 @@ public class GenericLinkedList<T> implements SimpleList<T> {
             }
             previous.next = current.next; // Unlink the current node from the list
         }
+    }
+
+    // Make Linked List an implementation of Interable()
+    /*******************************************************
+     * Private inner (nested) class MyLinkedListIterator
+     * that implements the Java interface "Iterator"
+     ********************************************************/
+    public class MyLListIterator<T> implements Iterator<T> {
+        private Node<T> current;
+
+        public MyLListIterator(Node<T> f) { // constructor
+            current = f; // Initialize
+        }
+        @Override
+        public boolean hasNext() { // Returns true if there are more elements.
+            return current != null; // True if there are unvisited nodes
+        }
+
+        @Override
+        public T next() { // Returns the next element in the iteration.
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            T res = current.item;    // get item at current position
+            current = current.next;  // move to the next node
+            return res;
+        }
+    } // end of inner class
+
+    @Override
+    public Iterator<T> iterator() {
+        return new MyLListIterator<>(first);
     }
 
     public String toString() {
