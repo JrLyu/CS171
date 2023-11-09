@@ -86,7 +86,8 @@ public class GenericLinkedList<T> {
         Node<T> previous = first;
         while (i < pos) { // get to the pos position
             if (current == null) {
-                // if the current node is null, we exhaust the linked list -> pos is greater than the length of the list
+                // if the current node is null, we exhaust the linked list
+                // -> pos is greater than the length of the list
                 throw new NoSuchElementException();
             }
             // update the current and previous nodes
