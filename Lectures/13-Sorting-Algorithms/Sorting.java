@@ -138,14 +138,14 @@ public class Sorting {
 
         for (int i = 1; i < n; i++) { // Repeat n-1 times
             // Compare arr[i] with each prior element
-            for ( int j = i; j > 0; j-- ) {
-                if ( list[j-1].compareTo(list[j]) > 0 ) // If out of place
+            for (int j = i; j > 0; j--) {
+                if (list[j-1].compareTo(list[j]) > 0) // If out of place
                     exch( list, j-1, j);  // Swap list[j-1] and list[j]
                 else
                     break;               // STOP
             }
 
-            System.out.println( Arrays.toString( list ) );
+            System.out.println(Arrays.toString(list));
         }
     }
     /* The loop structure is the following:
