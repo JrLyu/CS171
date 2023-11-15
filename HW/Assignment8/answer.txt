@@ -37,9 +37,8 @@ expressed in term of N):
 
     # Iterations = N + (N-2) + (N-4) + (N-6) + (N-8) + ... + 2
                  = ((N + 2) * (N/2))/2      by arithmetic series
-                 = (N^2 + 2N)/4 ~ N^2/4 ~ O(N^2)
-
-    Therefore, the program fragment is O(N^2).
+                 = (N^2 + 2N)/4
+                 = N^2/4 + N/2
 
 
 
@@ -78,8 +77,9 @@ is doPrimitive() executed expressed in term of N = b-a):
    Eventually, we want N/2^k = 1 --> N = 2^k --> k = log(N)
    C(N) = k*N + 2^k*C(1)
         = N*log(N) + 0
-        = N*log(N) ~ O(N*log(N))
-   Therefore, the runtime complexity is O(N*log(N)).
+        = N*log(N)
+
+    # Iterations = N*log(N)
 
 
 

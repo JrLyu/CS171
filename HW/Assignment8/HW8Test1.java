@@ -25,9 +25,5 @@ public class HW8Test1 {
          if (err == 0) {
              System.out.println("\nTest 1 passed\n");
          }
-
-
-
-
     }
 }
