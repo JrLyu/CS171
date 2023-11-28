@@ -20,6 +20,12 @@ public class QuickSort {
         quickSort(A, s, pivotLoc);   // Sort left half with quick sort
         quickSort(A, pivotLoc+1, e); // Sort right half with quick sort
     }
+    /*
+    Run time analysis of the quickSort algorithm: depends on how partition() splits up the array
+    The best case running time is O(nlog(n))
+    The worst case running time is O(n^2): when we sort a sorted array with quick sort
+    The average case running time is 2(n+1)log(n)=O(nlog(n))
+     */
 
     /**
      * The partition algorithm will partition the array A into subarrays A[s..e-1] using A[s] as pivot
@@ -44,6 +50,20 @@ public class QuickSort {
         exch(A, s, high); // A[s] = pivot
         return high;
     }
+    /*
+    Rune time Analysis of Partition: Simplified code for partition:
+    public static <T extends Comparable<T>> int partition(T[] A, int s, int e) {
+        T pivot = A[s];
+        int low = s+1, high = e-1;
+        while (low <= high) {
+            doPrimitive(); // either do high--; or low++;
+            ---> Loop will run (e-1) - (s+1) times = e - 1 - s - 1 = e - s - 2
+        }
+        doPrimitive();     //  1
+        return high;
+    }
+    So, in total, the running time for the partition algorithm is n-1 ~= n
+     */
 
     /**
      * The book has a different representation of the partition algorithm:
@@ -98,7 +118,7 @@ public class QuickSort {
      * @param <T> Data type that implements the Comparable interface (that is,
      *           public int compareTo(T o); is defined)
      */
-    private static <T extends Comparable<T>> void exch(T[] a, int i, int j ) {
+    public static <T extends Comparable<T>> void exch(T[] a, int i, int j ) {
         T help = a[i];
         a[i] = a[j];
         a[j] = help;

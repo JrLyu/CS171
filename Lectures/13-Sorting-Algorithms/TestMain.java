@@ -11,9 +11,10 @@ public class TestMain {
      *      7 - Test Improved Merge Sort: Improved Tim Sort
      *      8 - Test Non-Recursive Merge Sort Algorithm
      *      9 - Test Quick Sort
+     *      10 - Test Quick Sort with Shuffling
      */
     public static void main(String[] args) {
-        int caseNum = 10;
+        int caseNum = 11;
 
         Integer[] a = {2, 9, 8, 4, 7, 6, 1};
         TestCodes.test(caseNum, a);
@@ -26,7 +27,5 @@ public class TestMain {
 
         String[] B = { "klm", "xyz", "abc", "uvw", "qrs", "fgh", "bcd", "mno"};
         TestCodes.test(caseNum, B);
-
-
     }
 }

@@ -1,5 +1,7 @@
 import java.util.Arrays;
 
+import static java.util.Arrays.sort;
+
 public class TestCodes {
     /**
      * This is a test method for all the sorting algorihtms we have encountered
@@ -92,6 +94,27 @@ public class TestCodes {
                 System.out.println("------ Test Quick Sort ------");
                 System.out.println("Original Array: \n" + Arrays.toString(a) + "\n");
                 QuickSort.quickSort(a, 0, a.length);
+                System.out.println("\nAfter sorting: \n" + Arrays.toString(a) + "\n");
+                break;
+            case 10:
+                System.out.println("------ Test Quick Sort with Shuffle------");
+                System.out.println("Original Array: \n" + Arrays.toString(a) + "\n");
+                // shuffle array A
+                for ( int k = 0; k < a.length; k++ ) {
+                    int i = (int)(Math.random() * a.length);
+                    int j = (int)(Math.random() * a.length);
+                    QuickSort.exch(a, i, j);
+                }
+                System.out.println("Shuffled Array: \n" + Arrays.toString(a) + "\n");
+                QuickSort.quickSort(a, 0, a.length);
+                System.out.println("\nAfter sorting: \n" + Arrays.toString(a) + "\n");
+                break;
+            case 11:
+                // In java.util.Arrays.sort,
+                // sort(int[] a): uses a Dual-Pivot Quicksort algorithm, and
+                // sort(Object[] a): implements a stable, adaptive, iterative mergesort.
+                System.out.println("Original Array: \n" + Arrays.toString(a) + "\n");
+                sort(a);
                 System.out.println("\nAfter sorting: \n" + Arrays.toString(a) + "\n");
                 break;
             default:
