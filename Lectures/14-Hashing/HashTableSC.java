@@ -76,7 +76,7 @@ public class HashTableSC<K,V> implements Dictionary<K, V> {
             h.value = v; // update
         } else { // not found
             // Add newEntry as first element in list at bucket[hashIdx]
-            Entry newEntry = new Entry(k, v); // make a new entry
+            Entry<K,V> newEntry = new Entry<>(k, v); // make a new entry
             newEntry.next = bucket[hashIdx]; // point to the first item in the bucket
             bucket[hashIdx] = newEntry; // make new entry as the first
             NItems++;

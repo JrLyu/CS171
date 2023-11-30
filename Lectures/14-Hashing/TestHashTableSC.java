@@ -1,6 +1,6 @@
 public class TestHashTableSC {
     public static void main(String[] args) {
-        Dictionary D = new HashTableSC(10);
+        Dictionary<Object, Object> D = new HashTableSC<>(10); // In practice, the table size will be a million
 
         D.put("ice", "cold");
         D.put("fire", "hot");
@@ -12,14 +12,14 @@ public class TestHashTableSC {
         D.put("rock", "hard");
         D.put("wool", "soft");
         System.out.println("\n------ Test put() ------");
-        System.out.println("sun:" +D.get("sun"));
+        System.out.println("sun:" + D.get("sun"));
         D.put("sun", "hot");
-        System.out.println("sun:" +D.get("sun"));
+        System.out.println("sun:" + D.get("sun"));
         D.put("sun", "**bright**");   // Update !
-        System.out.println("sun:" +D.get("sun"));
+        System.out.println("sun:" + D.get("sun"));
         D.put("moon", "shine");
 
-        Dictionary H = new HashTableSC<>(10);
+        Dictionary<Object, Object> H = new HashTableSC<>(10);
 
         H.put("ice", "cold");
         H.put("fire", "hot");

@@ -1,6 +1,6 @@
 public class TestArrayMap {
     public static void main(String[] args) {
-        Dictionary D = new ArrayMap<>(10);
+        Dictionary<Object, Object> D = new ArrayMap<>(10);
 
         D.put("ice", "cold");
         D.put("fire", "hot");
@@ -19,7 +19,7 @@ public class TestArrayMap {
         System.out.println("sun:" +D.get("sun"));
         D.put("moon", "shine");
 
-        Dictionary H = new ArrayMap<>(10);
+        Dictionary<Object, Object> H = new ArrayMap<>(10);
 
         H.put("ice", "cold");
         H.put("fire", "hot");
