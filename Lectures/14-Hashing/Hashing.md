@@ -38,7 +38,7 @@ public class ArrayMap<K,V> implements Dictionary<K,V> {
         private K key; // The key (to look up)
         private V value; // the value (corresponding to the key)
 
-        public Entry(K k, V, v) { // constructor
+        public Entry(K k, V v) { // constructor
             key = k;
             value = v;
         }
@@ -121,7 +121,7 @@ public class ArrayMap<K,V> implements Dictionary<K,V> {
         if (found) {
             // Key found
             ret = entry[loc].getValue(); // update return value
-            for (int i = loc + 1; i < n Entries; i++) {
+            for (int i = loc + 1; i < nEntries; i++) {
                 // delete entry [loc]
                 entry[i-1] = entry[i]; // shift array
             }

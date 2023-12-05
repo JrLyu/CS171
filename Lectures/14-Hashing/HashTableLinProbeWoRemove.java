@@ -85,7 +85,7 @@ public class HashTableLinProbeWoRemove<K,V> {
         String s = "";
         for (int i = 0; i < bucket.length; i++) {
             if (bucket[i] == null) {
-                s += i + ": " + "[NULL]]" + "\n";
+                s += i + ": " + "[NULL]" + "\n";
             } else {
                 s = s + i + ": " + bucket[i].toString() + "\n";
             }

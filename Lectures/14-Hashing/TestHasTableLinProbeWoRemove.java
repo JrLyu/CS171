@@ -12,7 +12,7 @@ public class TestHasTableLinProbeWoRemove {
         H.put("wool", "soft");
         System.out.println("Hash Table: \n" + H);
         H.put("sun", "hot");
-        System.out.println(H);
+        System.out.println("Hash Table: \n" + H);
         H.put("sun", "**bright**");    // Updates
         System.out.println("Hash Table: \n" + H);
         H.put("moon", "shine");        // *** Full ***

@@ -1,4 +1,4 @@
-public class HashTableLinProbe<K,V> implements Dictionary<K,V> {
+public class HashTableLP<K,V> implements Dictionary<K,V> {
     // Make Entry an inner class of ArrayMap
     private class Entry<K,V> {
         private K key;   // The key (to loop up)
@@ -31,7 +31,7 @@ public class HashTableLinProbe<K,V> implements Dictionary<K,V> {
     public Entry AVAILABLE;
 
     // Constructor
-    public HashTableLinProbe(int M) {  // Create a hash table of size M
+    public HashTableLP(int M) {  // Create a hash table of size M
         bucket = (Entry[]) new Entry[M]; // Create a hash table of size M
         capacity = bucket.length;        // Capacity of this hash table
         NItems = 0;                      // # items in hash table
@@ -54,17 +54,31 @@ public class HashTableLinProbe<K,V> implements Dictionary<K,V> {
     public void put(K k, V v) {
         int hashIdx = hashValue(k); // Find the hash index for key k
         int i = hashIdx;
-        do {
+        int firstAvail = -1; // -1 means: no AVAILABLE entry found (yet).
+
+        do { // search or key k in the hash table
             if (bucket[i] == null) { // Is entry empty ?
-                bucket[i] = new Entry<>(k,v);
+                if ( firstAvail == -1 ) {  // No AVAILABLE bucket found
+                    bucket[i] = new Entry<>(k, v); // Insert (k,v) in this empty bucket
+                } else { // An AVAILABLE bucket found
+                    bucket[firstAvail] = new Entry<>(k, v);
+                }
                 return;
+            } else if (bucket[i].key == AVAILABLE) {
+                if (firstAvail == -1) {
+                    firstAvail = i;
+                }
             } else if (bucket[i].key == k) { // Does entry contains key k ?
                 bucket[i].value = v;
                 return;
             }
             i = (i + 1) % capacity;  // Check in next hash table entry
         } while (i != hashIdx); // All entries searched !
-        System.out.println("Full"); // The whole table is full -- rarely happened.
+        if (firstAvail == -1) {
+            System.out.println("Full"); // The whole table is full -- rarely happened.
+        } else {
+            bucket[firstAvail] = new Entry<>(k,v);
+        }
     }
 
     public V get(K k) {
@@ -74,8 +88,9 @@ public class HashTableLinProbe<K,V> implements Dictionary<K,V> {
         do {
             if (bucket[i] == null ) { // Is entry empty ?
                 return null;   // NOT found
-            }
-            else if (bucket[i].key == k ) { // FOUND
+            } else if (bucket[i] == AVAILABLE) {
+                // Do nothing and continue
+            } else if (bucket[i].key == k ) { // FOUND
                 return bucket[i].value;
             }
             i = (i + 1) % capacity;  // Check in next hash table entry
@@ -110,11 +125,15 @@ public class HashTableLinProbe<K,V> implements Dictionary<K,V> {
         String s = "";
         for (int i = 0; i < bucket.length; i++) {
             if (bucket[i] == null) {
-                s += i + ": " + "[NULL]]" + "\n";
+                s += i + ": " + "[NULL]" + "\n";
+            } else if (bucket[i] == AVAILABLE) {
+                s += i + ": " + "[AVAILABLE]" + "\n";
             } else {
                 s = s + i + ": " + bucket[i].toString() + "\n";
             }
         }
         return s;
     }
+
+
 }
