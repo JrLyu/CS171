@@ -17,7 +17,7 @@
     - The BFS algorithm will probe nodes that are nearest to the source nodes first.
     - To implement the "search the nearest nodes first" behavior, the BFS algorithm use a queue to store nodes to visit next. 
 
-## The Que Interface
+## The Queue Interface
 ```java
 public interface MyQueueInterface<E> {
     boolean isEmpty(); // returns true if the queue is empty
