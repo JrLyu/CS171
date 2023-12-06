@@ -680,3 +680,28 @@ $$
   - The probability (=likelihood) of finding a bucket to be empty = $1-\alpha$.
   - The average runtime of `get()`, `put()`, and `remove()` is the average number of compare operations performed to find an empty bucket. This quantity is equal to $\dfrac{1}{1-\alpha}$.
   - Example: If $\alpha=10\%$, then (because 90\% of the time we find an empty bucket), average number bucekts searched is `1/(1-0.1) = 1/0.9 ~= 1.1`.
+
+## Double Hashing
+- Consequence of increasing/decreasing the hash table size: 
+  - Due to the dependency of the hash function on the array size `M`, we have the following unfortunate consequence: **Changing the array size will also change the hash function.**
+  - This means: the entries stored using the old hash function cannot be found using the new hash function.
+  - In other words, when we increase/decrease the hash table size, we must rehash all the entries using the new hash function. 
+- Naïve way to increase/decrease the hash table size.
+  - Because the hash function changes with the hash table size, we must rehash all the keys and insert them into the new hash table.
+  - A naïve way to do this is to create a new hash table with the new size, and then insert all the keys into the new hash table.
+  ```java
+  public void doubleHashTable() {
+    Entry[] oldBucket = bucket; // save the old hash table
+
+    // Double the size of the bucket
+    bucket = (Entry[]) new Entry[2 * oldBucket.length];
+    capacity = 2 * oldBucket.length;
+
+    // Rehash all the entries in the old hash table
+    for (int i = 0; i < oldBucket.length; i++) {
+        if (oldBucket[i] != null && oldBucket[i] != AVAILABLE) {
+            this.put(oldBucket[i].getKey(), oldBucket[i].getValue());
+        }
+    }
+  }
+  ```
