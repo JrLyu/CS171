@@ -19,7 +19,7 @@ public class Card {
     // ======================================================================
     public Card(String cardSuit, String cardRank) {
         // Find i such that suitToString[i].equals(cardSuit)
-        for ( int i = 0; i < suitToString.length; i++ ) {
+        for (int i = 0; i < suitToString.length; i++) {
             if (cardSuit.equals(suitToString[i])) {
                 suit = i;
                 break;
@@ -27,7 +27,7 @@ public class Card {
         }
 
         // Find i such that rankToString[i].equals(cardRank)
-        for ( int i = 0; i < rankToString.length; i++ ) {
+        for (int i = 0; i < rankToString.length; i++) {
             if (cardRank.equals(rankToString[i])) {
                 rank = i;
                 break;
